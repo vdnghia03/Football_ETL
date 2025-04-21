@@ -1,0 +1,35 @@
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/leagues.csv'
+INTO TABLE leagues
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/teams.csv'
+INTO TABLE teams
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/players.csv'
+INTO TABLE players
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/appearances.csv'
+INTO TABLE appearances
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/teamstats.csv'
+INTO TABLE teamstats
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dataset/football/games.csv'
+INTO TABLE games
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
