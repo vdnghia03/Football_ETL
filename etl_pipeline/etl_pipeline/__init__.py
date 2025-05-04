@@ -3,10 +3,10 @@ from dagster import Definitions
 from .assets.silver_layer import *
 from .assets.gold_layer import *
 from .assets.bronze_layer import *
-# from .assets.warehouse_layer import *
+from .assets.warehouse_layer import *
 from .resources.minio_io_manager import MinIOIOManager
 from .resources.mysql_io_manager import MySQLIOManager
-#from .resources.psql_io_manager import PostgreSQLIOManager
+from .resources.psql_io_manager import PostgreSQLIOManager
 
 MYSQL_CONFIG = {
     "host": os.getenv("MYSQL_HOST"),
@@ -21,13 +21,14 @@ MINIO_CONFIG = {
     "aws_access_key_id": os.getenv("AWS_ACCESS_KEY_ID"),
     "aws_secret_access_key": os.getenv("AWS_SECRET_ACCESS_KEY")
 }
-# PSQL_CONFIG = {
-#     "host": os.getenv("POSTGRES_HOST"),
-#     "port": os.getenv("POSTGRES_PORT"),
-#     "database": os.getenv("POSTGRES_DB"),
-#     "user": os.getenv("POSTGRES_USER"),
-#     "password": os.getenv("POSTGRES_PASSWORD")
-# }
+PSQL_CONFIG = {
+    "host": os.getenv("POSTGRES_HOST"),
+    "port": os.getenv("POSTGRES_PORT"),
+    "database": os.getenv("POSTGRES_DB"),
+    "user": os.getenv("POSTGRES_USER"),
+    "password": os.getenv("POSTGRES_PASSWORD")
+}
+
 # ls_asset=[asset_factory(table) for table in tables] + [silver_statsTeamOnGames, 
 #                                                        silver_teams ,
 #                                                        silver_playerAppearances,
@@ -44,9 +45,9 @@ ls_asset=[asset_factory(table) for table in tables] + [silver_statsTeamOnGames,
                                                          gold_statsPerLeagueSeason,
                                                          gold_statsPerPlayerSeason, 
                                                          gold_statsPlayerPer90,
-                                                         # statsPerLeagueSeason,
-                                                         # statsPerPlayerSeason,
-                                                         # statsPlayerPer90
+                                                         statsPerLeagueSeason,
+                                                         statsPerPlayerSeason,
+                                                         statsPlayerPer90
                                                         ]
 
 defs = Definitions(
@@ -54,6 +55,6 @@ defs = Definitions(
     resources={
         "mysql_io_manager": MySQLIOManager(MYSQL_CONFIG),
         "minio_io_manager": MinIOIOManager(MINIO_CONFIG),
-        #"psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
+        "psql_io_manager": PostgreSQLIOManager(PSQL_CONFIG),
     }
 )
