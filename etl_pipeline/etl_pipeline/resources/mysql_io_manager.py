@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from datatime import datetime
+from datetime import datetime
 import pandas as pd
 from sqlalchemy import create_engine
 from dagster import IOManager, io_manager, InputContext, OutputContext
@@ -8,7 +8,7 @@ from dagster import IOManager, io_manager, InputContext, OutputContext
 @contextmanager
 def connect_mysql(config):
     conn_info = (
-        f"mysql://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}"
+        f"mysql+pymysql://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}"
     )
 
     db_conn = create_engine(conn_info)

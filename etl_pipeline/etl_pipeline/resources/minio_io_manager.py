@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from datatime import datetime
+from datetime import datetime
 import os
 from typing import Union
 from dagster import IOManager, io_manager, InputContext, OutputContext
@@ -13,7 +13,7 @@ from minio import Minio
 @contextmanager
 def connect_minio(config):
     minio_client = Minio(
-        enpoint=config["endpoint_url"],
+        endpoint=config["endpoint_url"],
         access_key=config["aws_access_key_id"],
         secret_key=config["aws_secret_access_key"],
         secure=False,
